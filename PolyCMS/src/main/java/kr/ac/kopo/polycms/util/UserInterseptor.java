@@ -18,6 +18,8 @@ public class UserInterseptor extends HandlerInterceptorAdapter {
 			System.out.println("UserInterseptor : True");
 			return true;
 		}
+		System.out.println("UserInterseptor : False");
+		response.sendRedirect("/login");
 		return false;
 	}
 	
