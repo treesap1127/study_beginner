@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<settings>
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+	</settings>
+
+	<typeAliases>
+		<typeAlias type="kr.ac.kopo.bookstore.model.Book" alias="Book"/>
+<!-- 	<package name="kr.ac.kopo.bookstore.model"/> -->
+	</typeAliases>
+	<!-- 별명붙여줌! -->
+	
+	<mappers>
+		<mapper resource="mybatis/book.xml"/>
+	</mappers>
+	
+</configuration>

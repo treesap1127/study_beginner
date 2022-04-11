@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="red" class="kr.ac.kopo.Color">
+		<constructor-arg value="붉은색"></constructor-arg>
+		<!-- 생성자로 주입! -->
+	</bean>
+
+	<bean id="blue" class="kr.ac.kopo.Color">
+		<constructor-arg value="파란색"></constructor-arg>
+		<!-- 생성자로 주입! -->
+	</bean>
+
+	<bean id="wheel" class="kr.ac.kopo.Wheel">
+		<constructor-arg value="네모난"></constructor-arg>
+		<!-- 생성자로 주입! -->
+	</bean>
+	
+	<bean id="kr.ac.kopo.Type" class="kr.ac.kopo.Type">
+		<constructor-arg value="산타페"></constructor-arg>
+		<!-- 생성자로 주입! -->
+	</bean>
+	
+	<bean id="cart" class="kr.ac.kopo.Cart">
+		<property name="color" ref="red"></property>
+		<property name="wheel" ref="wheel"></property>
+		<property name="type" ref="kr.ac.kopo.Type"></property>
+	</bean>
+</beans>
