@@ -8,6 +8,8 @@ public class Pager {
       private int perPage = 10;
       private int perGroup = 5;
       private double total;  
+      private int search;
+      private String keyword;
       
    public double getTotal() {
       return total;
@@ -63,6 +65,18 @@ public class Pager {
       
       return list;
    }
+public int getSearch() {
+	return search;
+}
+public void setSearch(int search) {
+	this.search = search;
+}
+public String getKeyword() {
+	return keyword;
+}
+public void setKeyword(String keyword) {
+	this.keyword = keyword;
+}
    
       
 }

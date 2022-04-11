@@ -16,12 +16,32 @@
 		<div>
 			<h3>${boardId} 목록</h3>
 		</div>
+		<div>총 ${pager.total} 건</div>
+		<div style="display: flex">
+			<form>
+				<div>
+					<select name="search">
+						<option value="0">전체</option>
+						<option value="1">제목</option>
+						<option value="2">내용</option>
+						<option value="3">작성자</option>
+					</select>
+				</div>
+				<div>
+					<input type="text" name="keyword">
+				</div>
+				<div>
+					<button>검색</button>
+				</div>
+			</form>
+		</div>
 		<div>
 			<table border="1">
 				<thead>
 					<tr>
 						<th>번호</th>
 						<th>제목</th>
+						<th>작성자</th>
 						<th>조회수</th>		
 						<th>관리</th>					
 					</tr>
@@ -30,7 +50,7 @@
 				<tbody>
 					<c:if test="${list.size() < 1}">
 						<tr>
-							<th colspan="3">등록 된 게시물이 없습니다</th>
+							<th colspan="5">등록 된 게시물이 없습니다</th>
 						</tr>
 					</c:if>
 					
@@ -38,6 +58,7 @@
 						<tr>
 							<td>${item.articleId}</td>
 							<td><a href="view/${item.articleId}">${item.subject}</a></td>		
+							<td>${item.memberId}</td>
 							<td>${item.viewCount}</td>
 							<td><a href="update/${item.articleId}">변경</a> <a href="delete/${item.articleId}">삭제</a></td>
 						</tr>

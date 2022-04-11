@@ -1,15 +1,34 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>존잘 태성</title>
+<title></title>
+<c:if test="${msg!=null}">
+<script>
+	window.onload = function(){
+		alert("${msg}");
+	}
+</script>
+
+<style>
+	.error_msg{
+		color: red;
+		font-weight: bold;
+		
+	}
+</style>
+</c:if>
 </head>
 <body>
 	<div>
 		<div>
 			<h1>로그인</h1>
+			<c:if test="${msg!=null}">
+			<div class="error_msg">${msg}</div>
+			</c:if>
 		</div>
 		<form method="post">
 			<div>

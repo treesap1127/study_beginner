@@ -21,8 +21,25 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="kr.ac.kopo" />
+	<interceptors>
+		<interceptor>
+			<mapping path="/board/*/article/**"/>
+			
+			<exclude-mapping path="/board/*/article/list"/>
+			<beans:bean class="kr.ac.kopo.polycms.util.UserInterseptor"></beans:bean>
+		</interceptor>
+		<interceptor>
+			<mapping path="/board/**"/>
+			<mapping path="/member/**"/>
+			
+			<exclude-mapping path="/board/*/article/**"/>
+			
+			<beans:bean class="kr.ac.kopo.polycms.util.AdminInterceptor"></beans:bean>
+		</interceptor>
+	</interceptors>
 	
+	<context:component-scan base-package="kr.ac.kopo" />
+
 	
 	
 </beans:beans>

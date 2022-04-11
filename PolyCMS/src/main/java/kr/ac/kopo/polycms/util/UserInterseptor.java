@@ -5,7 +5,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
-
 import kr.ac.kopo.polycms.model.Member;
 
 public class UserInterseptor extends HandlerInterceptorAdapter {
@@ -18,6 +17,18 @@ public class UserInterseptor extends HandlerInterceptorAdapter {
 			System.out.println("UserInterseptor : True");
 			return true;
 		}
+		
+		String query=request.getQueryString();
+		session.setAttribute("target", request.getRequestURI()+(query != null ? "?" + query:"" ));
+
+//		URL url = new URL(request.getRequestURL().toString(););
+//		String query=url.getQuery();
+//		String target =url.getPath()+(query!=null?query:"");
+//		이거 쿼리 스트링 못가져옴 그냥 request가 먹히넹.. ㅎㅎ
+		
+		
+		
+
 		System.out.println("UserInterseptor : False");
 		response.sendRedirect("/login");
 		return false;

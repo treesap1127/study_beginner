@@ -6,16 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import kr.ac.kopo.polycms.model.Article;
 import kr.ac.kopo.polycms.model.ArticleCount;
+import kr.ac.kopo.polycms.pager.ArticlePager;
 import kr.ac.kopo.polycms.service.ArticleService;
-import kr.ac.kopo.polycms.util.Pager;
 
 @Controller
 @RequestMapping("/board/{boardId}/article")
@@ -64,9 +64,9 @@ public class ArticleController {
 	}
 	
 	@GetMapping("/list")
-	public String list(@PathVariable Long boardId,Pager pager, Model model) {
+	public String list(@PathVariable Long boardId,@ModelAttribute("pager") ArticlePager pager, Model model) {
 		
-		List<Article> list = service.list(pager,boardId);
+		List<Article> list = service.list(pager);
 		
 		model.addAttribute("list", list);
 		
@@ -74,7 +74,7 @@ public class ArticleController {
 	}
 	
 	@GetMapping("/add")
-	public String add() {
+	public String add() {		
 		return path + "add";
 	}
 	

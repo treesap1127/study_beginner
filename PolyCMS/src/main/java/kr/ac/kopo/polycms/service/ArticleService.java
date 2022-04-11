@@ -4,11 +4,11 @@ import java.util.List;
 
 import kr.ac.kopo.polycms.model.Article;
 import kr.ac.kopo.polycms.model.ArticleCount;
-import kr.ac.kopo.polycms.util.Pager;
+import kr.ac.kopo.polycms.pager.ArticlePager;
 
 public interface ArticleService {
 
-	List<Article> list(Pager pager, Long boardId);
+	List<Article> list(ArticlePager pager);
 
 	void add(Article item);
 

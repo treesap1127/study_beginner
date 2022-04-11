@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import kr.ac.kopo.polycms.model.Article;
 import kr.ac.kopo.polycms.model.ArticleCount;
-import kr.ac.kopo.polycms.util.Pager;
+import kr.ac.kopo.polycms.pager.ArticlePager;
 
 @Repository
 public class AricleDaoImpl implements ArticleDao {
@@ -18,14 +18,9 @@ public class AricleDaoImpl implements ArticleDao {
 	SqlSession sql;
 
 	@Override
-	public List<Article> list(Long boardId,Pager pager) {
-		HashMap<String,Object>map=new HashMap<String,Object>();
+	public List<Article> list(ArticlePager pager) {
 		
-		map.put("boardId", boardId);
-		map.put("page", pager.getPage());
-		map.put("perPage", pager.getPerPage());
-		
-		return sql.selectList("article.list", map);
+		return sql.selectList("article.list",pager);
 	}
 
 	@Override
@@ -74,12 +69,9 @@ public class AricleDaoImpl implements ArticleDao {
 	}
 
 	@Override
-	public long total(Pager pager, Long boardId) {
-		HashMap<String,Object>map=new HashMap<String,Object>();
+	public long total(ArticlePager pager) {
 		
-		map.put("boardId", boardId);
-		
-		return sql.selectOne("article.total", map);
+		return sql.selectOne("article.total", pager);
 	}
 
 

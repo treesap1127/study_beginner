@@ -5,6 +5,19 @@
 <mapper namespace="article">
 <sql id="search">
    select * from board_${boardId}
+   
+   <where>
+   	<if test="search==1">
+   		subject LIKE CONCAT('%',CONCAT(#{keyword},'%'))
+   	</if>
+   	<if test="search==2">
+   		contents LIKE CONCAT('%',CONCAT(#{keyword},'%'))
+   	</if>
+   	<if test="search==3">
+   		memberId=${keyword}
+   	</if>
+   </where>
+   
    order by article_id DESC
 </sql>
    <select id ="total" resultType="Long">
@@ -22,9 +35,9 @@
    <insert id="add">
       INSERT INTO board_${boardId}
       (article_id, subject,
-      contents, reg_date)
+      contents, reg_date,member_id)
       VALUES (BOARD_${boardId}_SEQ.nextval, #{subject},
-      #{contents}, sysdate)
+      #{contents}, sysdate,#{memberId})
    </insert>
 
    <select id="item" resultType="Article">
