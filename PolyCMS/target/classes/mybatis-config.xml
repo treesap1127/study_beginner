@@ -17,5 +17,6 @@
 		<mapper resource="mybatis/board.xml"/>
 		<mapper resource="mybatis/article.xml"/>
 		<mapper resource="mybatis/member.xml"/>
+		<mapper resource="mybatis/log.xml"/>
 	</mappers>
 </configuration>

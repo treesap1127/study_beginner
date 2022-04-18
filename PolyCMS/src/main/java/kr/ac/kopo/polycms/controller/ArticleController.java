@@ -12,8 +12,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
+
 import kr.ac.kopo.polycms.model.Article;
 import kr.ac.kopo.polycms.model.ArticleCount;
+import kr.ac.kopo.polycms.model.Member;
 import kr.ac.kopo.polycms.pager.ArticlePager;
 import kr.ac.kopo.polycms.service.ArticleService;
 
@@ -79,9 +82,9 @@ public class ArticleController {
 	}
 	
 	@PostMapping("/add")
-	public String add(@PathVariable Long boardId, Article item) {
+	public String add(@PathVariable Long boardId, Article item, @SessionAttribute Member member) {
 		System.out.println(item.getContents());
-		
+		item.setMemberId(member.getId());
 		item.setBoardId(boardId);
 		
 		service.add(item);

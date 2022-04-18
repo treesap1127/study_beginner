@@ -64,6 +64,7 @@ public class ArticleServiceImpl implements ArticleService {
 			item.setSubject("제목 테스트"+i);
 			item.setMemberId("admin");
 			dao.add(item);
+			
 		}
 		
 	}
