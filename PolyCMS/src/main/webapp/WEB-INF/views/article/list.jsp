@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
+<script src="/js/drag_order_dom.js"></script>
 <style type="text/css">
 	#empty_box{
 		width: 3px;
@@ -46,7 +47,7 @@
 						<th>관리</th>					
 					</tr>
 				</thead>
-				
+
 				<tbody>
 					<c:if test="${list.size() < 1}">
 						<tr>
@@ -55,7 +56,7 @@
 					</c:if>
 					
 					<c:forEach var="item" items="${list}">
-						<tr>
+						<tr class="dragItem">
 							<td>${item.articleId}</td>
 							<td><a href="view/${item.articleId}">${item.subject}</a></td>		
 							<td>${item.memberId}</td>
@@ -96,5 +97,8 @@
 		</div>
 		
 	</div>
+<script>
+	new DragOrder("tbody");
+</script>
 </body>
 </html>
