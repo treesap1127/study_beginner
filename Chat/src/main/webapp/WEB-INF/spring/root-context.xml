@@ -9,11 +9,11 @@
       
    <bean id="chatServer" class="kr.ac.kopo.ChatServer"></bean>
    
-   <websocket:handlers>
+   <websocket:handlers><!-- 챗을 연결해주는 핸들러! -->
       <websocket:mapping handler="chatServer" path="/chatserver"/>
       
       <websocket:handshake-interceptors>
-         <bean class="kr.ac.kopo.ChatIntercepter"></bean>
+         <bean class="kr.ac.kopo.ChatInterceptor"></bean>
       </websocket:handshake-interceptors>
    </websocket:handlers>   
 </beans>
