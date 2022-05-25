@@ -11,7 +11,7 @@ public class ChatInterceptor extends HttpSessionHandshakeInterceptor {
 
 	@Override
 	public boolean beforeHandshake(ServerHttpRequest request, ServerHttpResponse response, WebSocketHandler wsHandler,
-			Map<String, Object> attributes) throws Exception {
+		Map<String, Object> attributes) throws Exception {
 		String host =request.getRemoteAddress().getHostName();
 		
 		attributes.put("user", host);
